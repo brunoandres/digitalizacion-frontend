@@ -16,10 +16,12 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { SharedModule } from 'app/shared/shared.module';
 import { ProjectComponent } from 'app/modules/admin/dashboards/project/project.component';
 import { projectRoutes } from 'app/modules/admin/dashboards/project/project.routing';
+import { LegajosComponent } from '../legajos/legajos.component';
 
 @NgModule({
     declarations: [
-        ProjectComponent
+        ProjectComponent,
+        LegajosComponent
     ],
     imports     : [
         RouterModule.forChild(projectRoutes),

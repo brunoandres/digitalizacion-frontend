@@ -67,7 +67,7 @@ export class AuthMockApi
             .reply(({request}) => {
 
                 // Sign in successful
-                if ( request.body.email === 'hughes.brian@company.com' && request.body.password === 'admin' )
+                if ( request.body.email === 'sistemas@bariloche.gov.ar' && request.body.password === 'sistemasmscb' )
                 {
                     return [
                         200,
@@ -140,7 +140,7 @@ export class AuthMockApi
             .reply(({request}) => {
 
                 // Sign in successful
-                if ( request.body.email === 'hughes.brian@company.com' && request.body.password === 'admin' )
+                if ( request.body.email === 'sistemas@bariloche.gov.ar' && request.body.password === 'sistemasmscb' )
                 {
                     return [
                         200,

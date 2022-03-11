@@ -14,12 +14,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { TranslocoModule } from '@ngneat/transloco';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SharedModule } from 'app/shared/shared.module';
-import { ProjectComponent } from 'app/modules/admin/dashboards/project/project.component';
-import { projectRoutes } from 'app/modules/admin/dashboards/project/project.routing';
+import { projectRoutes } from 'app/modules/admin/dashboards/legajos/legajos.routing';
+import { LegajosComponent } from '../legajos/legajos.component';
 
 @NgModule({
     declarations: [
-        ProjectComponent
+        LegajosComponent
     ],
     imports     : [
         RouterModule.forChild(projectRoutes),
@@ -39,6 +39,6 @@ import { projectRoutes } from 'app/modules/admin/dashboards/project/project.rout
         SharedModule
     ]
 })
-export class ProjectModule
+export class LegajosModules
 {
 }

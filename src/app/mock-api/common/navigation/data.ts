@@ -36,6 +36,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 type : 'basic',
                 icon : 'heroicons_outline:currency-dollar',
                 link : '/dashboards/crypto'
+            },
+            {
+                id   : 'dashboards.legajos',
+                title: 'Legajos',
+                type : 'basic',
+                icon : 'heroicons_outline:currency-dollar',
+                link : '/dashboards/legajos'
             }
         ]
     },

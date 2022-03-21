@@ -1,5 +1,10 @@
 import { Layout } from 'app/layout/layout.types';
 
+/* App. Setting */
+import { InjectionToken } from '@angular/core';
+
+export let APP_CONFIG = new InjectionToken('app.config');
+
 // Types
 export type Scheme = 'auto' | 'dark' | 'light';
 export type Theme = 'default' | string;
@@ -28,3 +33,8 @@ export const appConfig: AppConfig = {
     scheme: 'light',
     theme : 'default'
 };
+
+export interface IAppConfig {
+    clientid: string;
+    clientsecret: string;
+}

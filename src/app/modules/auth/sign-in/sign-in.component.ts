@@ -55,11 +55,7 @@ export class AuthSignInComponent implements OnInit
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Sign in
-     */
-    signIn(): void
-    {
+    signIn(): void{
         // Return if the form is invalid
         if ( this.signInForm.invalid )
         {
@@ -105,5 +101,20 @@ export class AuthSignInComponent implements OnInit
                     this.showAlert = true;
                 }
             );
+    }
+
+    async login() {
+
+
+        if ( this.signInForm.invalid )
+        {
+            return;
+        }
+
+        this._authService.logIn(
+            this.signInForm.value.email,
+            this.signInForm.value.password
+        );
+
     }
 }

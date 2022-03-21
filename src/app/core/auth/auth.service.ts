@@ -1,13 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
+import { environment } from 'environments/environment';
+import { APP_CONFIG, IAppConfig } from '../config/app.config';
+
+const URL_BACKEND = environment.urlBackend;
 
 @Injectable()
-export class AuthService
-{
+export class AuthService{
+
+    token: string = null;
+    user: any;
+
     private _authenticated: boolean = false;
 
     /**
@@ -15,10 +22,9 @@ export class AuthService
      */
     constructor(
         private _httpClient: HttpClient,
-        private _userService: UserService
+        private _userService: UserService,
     )
-    {
-    }
+    {}
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -40,6 +46,44 @@ export class AuthService
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
+
+    // ACCESO AL SITIO
+    async logIn(email: string, password: string): Promise<boolean>{
+
+        const data = {
+            email,
+            password
+          };
+      
+          return new Promise( async resolve => {
+      
+            /* LLAVES DE SEGURIDAD */
+            const headers =  new HttpHeaders({
+                clientid: "JUhQX1tgQ3UGKfbEdfkfDLIZ8",
+                clientsecret: "dlMzRhZTE0LmpwZyIsInBlcmZpbCI6I",
+            });
+      
+            this._httpClient.post(`${ URL_BACKEND }/auth/login`, data, { headers })
+            .subscribe( async ( resp: Response ) => {
+      
+              /*if (resp.response.ok) {
+                Swal.close();
+                await this.setJWToken( resp.response.token) ;
+                await this.guiMsjService.msjFormSubmit('loginOk');
+                this.router.navigate(['/']);
+                resolve(true);
+      
+              } else {
+      
+                Swal.close();
+                await this.guiMsjService.msjFormSubmit('loginError');
+                resolve(false);
+      
+              }*/
+      
+            });
+        });
+    }
 
     /**
      * Forgot password
